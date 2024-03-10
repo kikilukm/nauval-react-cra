@@ -1,19 +1,22 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Welcome, { Welcome2, Welcome3, Button } from "./welcome";
-
+import { Routes, Route, Link } from "react-router-dom";
+import Home from "./Home";
+import About from "./About";
+import Team from "./Team";
 function App() {
 	return (
 		<div className="App">
 			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Ini sangat merepresentasikan saya sebagai seorang programmer
-				</p>
-				<Welcome children="Selamat Datang 1" />
-				<Welcome2 children="Selamat Datang 2" />
-				<Welcome3> Selamat Datang 3 </Welcome3>
-        <Button>Klik Gueh</Button>
+				<nav>
+					<Link to="/">Home</Link>
+					<Link to="/About">About</Link>
+				</nav>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/About" element={<About />} >
+						<Route path="/About/Team" element={<Team />} />
+					</Route>
+				</Routes>
 			</header>
 		</div>
 	);
